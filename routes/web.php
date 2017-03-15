@@ -14,3 +14,11 @@
 $app->get('/', function () use ($app) {
     return $app->version();
 });
+
+$app->get('session/put', function () {
+	app('session')->put('key','Hello Lumen Session!');
+});
+
+$app->get('session/get', function () {
+	echo app('session')->get('key');
+});
