@@ -66,6 +66,9 @@ $app->singleton(
 // $app->routeMiddleware([
 //     'auth' => App\Http\Middleware\Authenticate::class,
 // ]);
+$app->middleware([
+    Illuminate\Session\Middleware\StartSession::class
+]);
 
 /*
 |--------------------------------------------------------------------------
@@ -81,6 +84,10 @@ $app->singleton(
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
+$app->register(Illuminate\Session\SessionServiceProvider::class);
+$app->configure('session');
+
+$app->alias('session', 'Illuminate\Session\SessionManager');
 
 /*
 |--------------------------------------------------------------------------
